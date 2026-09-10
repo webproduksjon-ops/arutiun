@@ -15,3 +15,9 @@
 
 /* Two-line display rhythm and section breathing room. */
 h1,h2,h3,blockquote{ text-wrap:balance }.hero-copy h1,.inner-hero h1{max-width:700px}.inner-hero h1{line-height:1.02}.quote-section blockquote{max-width:850px;font-size:clamp(30px,3.4vw,48px);line-height:1.14}.cta-band{margin-top:88px;margin-bottom:112px}.cta-band p{max-width:560px}.section-dark + .cta-band{margin-top:96px}@media(max-width:760px){.quote-section blockquote{font-size:clamp(28px,7.5vw,40px);line-height:1.16}.cta-band{margin-top:56px;margin-bottom:72px}.section-dark + .cta-band{margin-top:64px}}
+
+/* Global content rule: display text stays within two lines; supporting copy within three. */
+h1,h2,h3,blockquote,.cta-band h2,.route-card h3,.media-card h3,.form-card h3,.process-list h3,.route-list h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-wrap:balance}.hero-lead,.inner-hero p,.section-intro>p,.split-feature p,.result-grid p,.program-grid p,.diagnostic-grid p,.contact-grid p,.cta-band p,.media-card p,.review-card p,.process-list p,.bio-grid p,.program-facts p,.issue-card p,.footer-note,.hero-copy small{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.hero-copy h1,.inner-hero h1{min-height:2.04em}.quote-section blockquote{min-height:2.28em}.section-intro>p,.hero-lead,.inner-hero p,.cta-band p{max-width:540px}.issue-card p{max-width:250px}.media-card p,.review-card p{max-width:460px}@media(max-width:760px){.hero-copy h1,.inner-hero h1{min-height:0}.quote-section blockquote{min-height:0}}
+
+/* Apply the three-line ceiling consistently to body copy and small annotations. */
+main p,main small{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
