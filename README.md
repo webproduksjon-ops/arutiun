@@ -1,26 +1,9 @@
-# arutiun.ru
+# arutiun.ru — GitHub Pages build
 
-Source code and assets for the **arutiun.ru** website.
+This repository publishes the rebuilt Russian-language website at:
 
-## Hosting requirements
+https://webproduksjon-ops.github.io/arutiun/
 
-The site contains PHP handlers for consultation and review forms, so it must be hosted on a PHP-capable web server. GitHub Pages can serve the static files but cannot execute the PHP handlers.
+The public root is a Vite-built static site using client-side routes under `/arutiun/`. `404.html` is an SPA fallback for GitHub Pages refreshes. `robots.txt` and `sitemap.xml` are included for the current deployment URL.
 
-## Server configuration
-
-Set these environment variables in the hosting environment rather than committing credentials to Git:
-
-| Variable | Required | Purpose |
-|---|---:|---|
-| `ARUTIUN_RECAPTCHA_SECRET` | Yes | Server-side Google reCAPTCHA verification |
-| `ARUTIUN_TELEGRAM_TOKEN` | No | Telegram bot token for notifications |
-| `ARUTIUN_TELEGRAM_CHAT_ID` | No | Destination chat for Telegram notifications |
-| `ARUTIUN_ENABLE_EMAIL` | No | Allows email notifications; defaults to `true` |
-| `ARUTIUN_EMAIL_TO` | No | Notification recipient; required to activate email |
-| `ARUTIUN_EMAIL_FROM` | No | Sender address; required to activate email |
-
-Email and Telegram notifications are disabled automatically unless their required variables are set.
-
-## Security
-
-Do not commit `.env` files, bot tokens, reCAPTCHA secrets, or production credentials. If credentials have previously been shared or published, rotate them with the relevant provider before deploying.
+The legacy `php/` and `data/` directories are retained for reference. GitHub Pages does not execute PHP; the contact form in this static build is a front-end presentation and needs a separate secure form endpoint before production lead capture.
