@@ -12,57 +12,80 @@
 		rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1.0.6" />
+	<script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
 
-	<!-- Analytics loader (Yandex.Metrika) — запускается только после согласия cookie -->
+	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript">
-		window.loadAnalytics = function () {
-			if (window.__analyticsLoaded) return;
-			window.__analyticsLoaded = true;
-
-			// Yandex.Metrika #96902319
-			(function (m, e, t, r, i, k, a) {
-				m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
-				m[i].l = 1 * new Date();
-				for (var j = 0; j < document.scripts.length; j++) {
-					if (document.scripts[j].src === r) { return; }
+		(function (m, e, t, r, i, k, a) {
+			m[i] =
+				m[i] ||
+				function () {
+					(m[i].a = m[i].a || []).push(arguments);
+				};
+			m[i].l = 1 * new Date();
+			for (var j = 0; j < document.scripts.length; j++) {
+				if (document.scripts[j].src === r) {
+					return;
 				}
-				k = e.createElement(t); a = e.getElementsByTagName(t)[0];
-				k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
-			})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-			ym(96902319, "init", {
-				clickmap: true,
-				trackLinks: true,
-				accurateTrackBounce: true,
-				webvisor: true
-			});
-
-			// Yandex.Metrika #97680696
-			ym(97680696, "init", {
-				accurateTrackBounce: true,
-				trackLinks: true,
-				webvisor: true,
-				clickmap: true,
-				params: { __ym: { isFromApi: "yesIsFromApi" } }
-			});
-		};
-
-		// Если пользователь уже принимал cookie (актуальной версии) — стартуем сразу
-		try {
-			if (localStorage.getItem('cookieAccepted') === 'true'
-				&& localStorage.getItem('cookieAcceptedVersion') === '2') {
-				window.loadAnalytics();
 			}
-		} catch (e) { /* localStorage недоступен — аналитика не запускается */ }
+			(k = e.createElement(t)),
+				(a = e.getElementsByTagName(t)[0]),
+				(k.async = 1),
+				(k.src = r),
+				a.parentNode.insertBefore(k, a);
+		})(
+			window,
+			document,
+			"script",
+			"https://mc.yandex.ru/metrika/tag.js",
+			"ym"
+		);
+
+		ym(96902319, "init", {
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true,
+			webvisor: true,
+		});
 	</script>
 	<noscript>
 		<div>
 			<img src="https://mc.yandex.ru/watch/96902319" style="position: absolute; left: -9999px" alt="" />
-			<img src="https://mc.yandex.ru/watch/97680696" style="position: absolute; left: -9999px" alt="" />
 		</div>
 	</noscript>
-	<!-- /Analytics loader -->
+	<!-- /Yandex.Metrika counter -->
+	<!-- Meta Pixel Code -->
+	<script>
+		!(function (f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod
+					? n.callMethod.apply(n, arguments)
+					: n.queue.push(arguments);
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = "2.0";
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s);
+		})(
+			window,
+			document,
+			"script",
+			"https://connect.facebook.net/en_US/fbevents.js"
+		);
+		fbq("init", "2130297680638390");
+		fbq("track", "PageView");
+	</script>
+	<noscript><img height="1" width="1" style="display: none"
+			src="https://www.facebook.com/tr?id=2130297680638390&ev=PageView&noscript=1" /></noscript>
+	<!-- End Meta Pixel Code -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			const feedbackPopup = document.getElementById("feedbackModal");
@@ -80,6 +103,36 @@
 		});
 	</script>
 </head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+	(function (m, e, t, r, i, k, a) {
+		m[i] =
+			m[i] ||
+			function () {
+				(m[i].a = m[i].a || []).push(arguments);
+			};
+		m[i].l = 1 * new Date();
+		(k = e.createElement(t)),
+			(a = e.getElementsByTagName(t)[0]),
+			(k.async = 1),
+			(k.src = r),
+			a.parentNode.insertBefore(k, a);
+	})(window, document, "script", "//mc.yandex.ru/metrika/tag.js", "ym");
+
+	ym(97680696, "init", {
+		accurateTrackBounce: true,
+		trackLinks: true,
+		webvisor: true,
+		clickmap: true,
+		params: { __ym: { isFromApi: "yesIsFromApi" } },
+	});
+</script>
+<noscript>
+	<div>
+		<img src="https://mc.yandex.ru/watch/97680696" style="position: absolute; left: -9999px" alt="" />
+	</div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
 
 <body>
 	<div class="site">
@@ -89,7 +142,7 @@
 					<span class="menu-item" id="home">Главная</span>
 					<span class="menu-item" id="how-i-work" data-target="specific-work">О том как я работаю</span>
 					<span class="menu-item" id="experience" data-target="education">Опыт и образование</span>
-					<span class="menu-item" id="menu-price" data-target="price">Стоимость консультаций</span>
+					<span class="menu-item" id="menu-price" data-target="price">Стоимость</span>
 					<span class="menu-item" id="menu-reviews" data-target="reviews">Отзывы</span>
 					<span class="menu-item" id="total" data-target="stages">Итог</span>
 				</div>
@@ -117,10 +170,9 @@
 						Записаться на 20 минутную бесплатную диагностическую консультацию
 					</button>
 					<p class="autor-p-desc">
-						<b>Компетентность:</b><br>
-						Международный EMDR‑терапевт<br>
-						Международный преподаватель по снижению стресса на основе осознанности (MINDFULNESS)<br>
-						Автор метода «СУТЬ»
+                        Автор метода «Суть»:<br> краткосрочная работа,<br> EMDR + mindfulness + личный опыт
+                        <br>Протоколы — 👇<br>
+                        <a href="https://t.me/Arutiun_bot" style="color: white;">t.me/Arutiun_bot</a>
 					</p>
 				</div>
 				<div class="autor-img">
@@ -133,8 +185,6 @@
 					<div class="specific-work-left">
 						<p class="italic">С чем я работаю?</p>
 						<div class="specific-work-items">
-						    <span>Выйти из операционки (делать бизнес правильно)</span>
-						 	<span>Внедрить систему в бизнес</span>
 						    <span>Управление реакциями под давлением</span>
 						 	<span>Прокачка емкости предпринимателя</span>
 							<span>Удержать рост</span>
@@ -210,7 +260,30 @@
 			</div>
 			
 
-			<div class="certificates-section" id="education">
+<div class="education" id="education">
+    <div class="education-section">
+        <h1>Компетентность</h1>
+        <div class="education-content">
+            <div class="education-item">
+                <h3>Международный EMDR‑терапевт</h3>
+            </div>
+            <div class="education-item">
+                <h3>Международный преподаватель по снижению стресса<br>на основе осознанности (MINDFULNESS)</h3>
+            </div>
+            <div class="education-item">
+                <h3>Автор метода «СУТЬ»</h3>
+            </div>
+            <div class="education-item">
+                <h3>протоколы👇</h3>
+            </div>
+            <div class="education-cta">
+                <a href="https://t.me/Arutiun_bot" class="education-link" target="_blank">t.me/Arutiun_bot</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+			<div class="certificates-section">
 				<div class="certificates-container">
 					<!-- Вертикальные сертификаты -->
 					<div class="certificates-group vertical-group">
@@ -255,40 +328,21 @@
 			
 		<section class="price" id="price">
     <div class="container">
-        <h1 class="section-title">Стоимость консультаций</h1>
+ <h1 class="section-title">Стоимость</h1>
         <div class="section-title-bar"></div>
         
         <div class="price-grid">
             <div class="price-image-wrapper">
-                <img src="assets/images/price3.png" alt="Стоимость 3" class="price-img">
+                <img src="/assets/images/price1.png" alt="Стоимость 1" class="price-img">
             </div>
             <div class="price-image-wrapper">
-                <img src="assets/images/price4.png" alt="Стоимость 4" class="price-img">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="price-products" id="price-products" style="margin-top: 50px;">
-    <div class="container">
-        <h1 class="section-title">Стоимость продуктов</h1>
-        <div class="section-title-bar"></div>
-        
-        <div style="text-align: center; margin-bottom: 30px;">
-            <a href="https://t.me/Arutiun_bot" target="_blank" style="color: #00d084; font-size: 20px; font-weight: 500; text-decoration: none; border: 1px solid #00422a; padding: 12px 24px; border-radius: 12px; display: inline-block; background: #00130c; transition: all 0.3s ease;">
-                Протоколы 👇 t.me/ArutiunAI_bot
-            </a>
-        </div>
-        
-        <div class="price-grid">
-            <div class="price-image-wrapper">
-                <img src="assets/images/photo1.1.png" alt="Продукт 1" class="price-img">
+                <img src="/assets/images/price2.png" alt="Стоимость 2" class="price-img">
             </div>
             <div class="price-image-wrapper">
-                <img src="assets/images/photo1.2.png" alt="Продукт 2" class="price-img">
+                <img src="/assets/images/price3.png" alt="Стоимость 3" class="price-img">
             </div>
             <div class="price-image-wrapper">
-                <img src="assets/images/photo1.3.png" alt="Продукт 3" class="price-img">
+                <img src="/assets/images/price4.png" alt="Стоимость 4" class="price-img">
             </div>
         </div>
     </div>
@@ -399,15 +453,6 @@
 							</div>
 							<div id="recaptcha1" class="kw-recaptcha"></div>
 							<div class="g-text-danger"></div>
-							<label class="consent-label" style="margin-bottom:16px; background:#00422a; padding:10px 12px; border-top-left-radius:8px; border-bottom-right-radius:8px;">
-								<input type="checkbox" id="reviewConsent" name="reviewConsent" required style="accent-color:#00d084; width:16px; height:16px; flex-shrink:0;" />
-								<span class="form_text" style="color:#f5f5f5;">
-									Оставляя отзыв, я подтверждаю, что ознакомлен(а) с
-									<a href="polzovatelskoe-soglashenie.html" style="color:#00d084;">Пользовательским соглашением</a>
-									и даю согласие на обработку персональных данных согласно
-									<a href="politika-obrabotki-pd.html" style="color:#00d084;">Политике конфиденциальности</a>
-								</span>
-							</label>
 							<button type="submit">Отправить</button>
 						</form>
 					</div>
@@ -476,9 +521,9 @@
 
 		<footer>
 			<div class="containerr">
-				<div class="footer-info" style="color:#f5f5f5;">
-					<p style="color:#f5f5f5;">ИНН Самозанятый: <strong style="color:#f5f5f5;">911102541805</strong></p>
-					<p style="color:#f5f5f5;">Панчоян Арутюн Керопович</p>
+				<div class="footer-info">
+					<p>ИНН Самозанятый: <strong>911102541805</strong></p>
+					<p>Панчоян Арутюн Керопович</p>
 				</div>
 				<div class="socials">
 					<a class="socials-item" href="https://t.me/Arutiun_Keropovich" target="_blank">
@@ -497,13 +542,7 @@
 					</a>
 				</div>
 				<div class="footer-a">
-					<div class="footer-legal">
-						<button class="footer-legal-toggle" onclick="toggleLegalMenu(this)">Правовые документы ▾</button>
-						<ul class="footer-legal-list" id="footerLegalList">
-							<li><a href="politika-obrabotki-pd.html">Политика в отношении обработки персональных данных</a></li>
-							<li><a href="polzovatelskoe-soglashenie.html">Пользовательское соглашение (оферта)</a></li>
-						</ul>
-					</div>
+					<a href="politika-obrabotki.html">Политика в отношении обработки персональных данных</a>
 				</div>
 			</div>
 		</footer>
@@ -605,7 +644,7 @@
 									style="color:red;">*</span>
 							</p>
 						</div>
-						<form id="feedbackForm" action="php/Consultation/SendForm.php" method="post">
+						<form id="feedbackForm" action="php/Consultation/SendFormV2.php" method="post">
 							<input type="text" id="userName" name="userName" placeholder="Ваше имя" />
 							<input type="text" name="honeypot" id="honeypot" style="display: none" autocomplete="off" />
 							<input type="number" id="userAge" name="userAge" placeholder="Ваш возраст"
@@ -647,9 +686,8 @@
 									<label><input type="checkbox" name="issues[]" value="Управление реакциями под давлением"
 											onchange="updateSelected()" />
 										Управление реакциями под давлением</label>
-									<label><input type="checkbox" name="issues[]" value="Прокачка емкости предпринимателя (пробить потолок в бизнесе)"
-											onchange="updateSelected()" />
-										Прокачка емкости предпринимателя (пробить потолок в бизнесе)</label>
+									<label><input type="checkbox" name="issues[]" value="Прокачка емкости предпринимателя(пробить потолок в бизнесе)"
+											onchange="updateSelected()" /><span>Прокачка емкости предпринимателя(пробить потолок в бизнесе)</span></label>
 									<label><input type="checkbox" name="issues[]" value="Удержать рост"
 											onchange="updateSelected()" />
 										Удержать рост</label>
@@ -737,18 +775,15 @@
 							<label class="consent-label">
 								<input type="checkbox" id="userConsent" name="userConsent" required />
 								<span class="form_text">
-									Нажимая на кнопку «Оставить заявку», я подтверждаю, что мне исполнилось 18 лет, принимаю условия
-									<a href="polzovatelskoe-soglashenie.html">Пользовательского соглашения</a>
-									и даю согласие на обработку моих персональных данных в соответствии с
-									<a href="politika-obrabotki-pd.html">Политикой&nbsp;конфиденциальности</a>
+									Нажимая на кнопку «Оставить заявку», я даю согласие на
+									<a href="politika.html">обработку персональных данных</a>
 								</span>
 							</label>
 
-						<div id="recaptcha2" class="kw-recaptcha"></div>
-<div class="g-text-danger"></div>
-						<input type="submit" value="Оставить заявку" class="submit-btn" />
+							<div id="recaptcha2" class="kw-recaptcha"></div>
+							<div class="g-text-danger"></div>
+							<input type="submit" value="Оставить заявку" class="submit-btn" />
 						</form>
-	
 					</div>
 				</div>
 			</div>
@@ -760,7 +795,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<script src="assets/js/reviews.js?v=20"></script>
+	<script src="assets/js/reviews.js?v=18"></script>
 	<script src="assets/js/components.js"></script>
 	<div class="popup-overlay" id="popupOverlay">
 		<div class="popup-content">
@@ -771,246 +806,7 @@
 			</p>
 		</div>
 	</div>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
-	<!-- ═══════════ Footer Legal Menu ═══════════ -->
-	<style>
-		.footer-legal { position: relative; text-align: right; }
-		.footer-legal-toggle {
-			background: none;
-			border: 1px solid #00422a;
-			color: #00d084;
-			font-family: "Gilroy", sans-serif;
-			font-size: 10px;
-			padding: 4px 10px;
-			border-radius: 0;
-			border-top-left-radius: 6px;
-			border-bottom-right-radius: 6px;
-			cursor: pointer;
-			transition: background 0.2s;
-		}
-		.footer-legal-toggle:hover { background: #00422a; opacity: 1; }
-		.footer-legal-list {
-			display: none;
-			position: absolute;
-			bottom: 100%;
-			right: 0;
-			background: #00130c;
-			border: 1px solid #00422a;
-			border-top-left-radius: 10px;
-			border-bottom-right-radius: 10px;
-			list-style: none;
-			padding: 10px 0;
-			margin-bottom: 6px;
-			min-width: 280px;
-			z-index: 100;
-			box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-		}
-		.footer-legal-list.open { display: block; }
-		.footer-legal-list li { padding: 0; }
-		.footer-legal-list li a {
-			display: block;
-			padding: 8px 18px;
-			color: #f5f5f5;
-			font-size: 11px;
-			text-decoration: none;
-			transition: color 0.2s;
-		}
-		.footer-legal-list li a:hover { color: #00d084; }
-		@media (max-width: 767px) {
-			.footer-legal { text-align: center; }
-			.footer-legal-list {
-				left: 50%;
-				right: auto;
-				transform: translateX(-50%);
-			}
-		}
-	</style>
-	<script>
-		function toggleLegalMenu(btn) {
-			var list = document.getElementById('footerLegalList');
-			list.classList.toggle('open');
-			btn.textContent = list.classList.contains('open') ? 'Правовые документы ▴' : 'Правовые документы ▾';
-		}
-		document.addEventListener('click', function(e) {
-			var legal = document.querySelector('.footer-legal');
-			if (legal && !legal.contains(e.target)) {
-				var list = document.getElementById('footerLegalList');
-				var btn = document.querySelector('.footer-legal-toggle');
-				if (list) { list.classList.remove('open'); }
-				if (btn) btn.textContent = 'Правовые документы ▾';
-			}
-		});
-	</script>
-	<!-- ═══════════ /Footer Legal Menu ═══════════ -->
-
-	<!-- ═══════════ Cookie Banner ═══════════ -->
-
-<style>
-		#cookie-banner {
-			position: fixed;
-			bottom: 32px;
-			left: 100px;
-			z-index: 9999;
-			width: 340px;
-			padding: 22px 24px 20px;
-			background: #00130c;
-			border: 1px solid #00422a;
-			border-top-left-radius: 12px;
-			border-bottom-right-radius: 12px;
-			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-			font-family: "Gilroy", "Roboto", sans-serif;
-			color: #f5f5f5;
-			line-height: 1.55;
-			transition: opacity 0.35s ease, transform 0.35s ease;
-		}
-		#cookie-banner.hidden {
-			opacity: 0;
-			transform: translateY(16px);
-			pointer-events: none;
-		}
-		#cookie-banner .cookie-close {
-			position: absolute;
-			top: 12px;
-			right: 14px;
-			background: none;
-			border: none;
-			color: #6e8a78;
-			font-size: 18px;
-			cursor: pointer;
-			padding: 2px 6px;
-			transition: color 0.2s;
-		}
-		#cookie-banner .cookie-close:hover {
-			color: #f5f5f5;
-		}
-		#cookie-banner .cookie-header {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			margin-bottom: 14px;
-		}
-		#cookie-banner .cookie-icon {
-			font-size: 32px;
-			line-height: 1;
-			flex-shrink: 0;
-		}
-		#cookie-banner .cookie-title {
-			display: flex;
-			flex-direction: column;
-			gap: 3px;
-		}
-		#cookie-banner .cookie-title strong {
-			font-size: 16px;
-			font-weight: 600;
-			color: #f5f5f5;
-		}
-		#cookie-banner .cookie-title span {
-			font-size: 13px;
-			font-weight: 400;
-			font-style: italic;
-			color: #00d084;
-		}
-		#cookie-banner .cookie-divider {
-			height: 1px;
-			background: #00422a;
-			margin: 0 0 16px;
-		}
-		#cookie-banner .cookie-body {
-			font-size: 14px;
-			font-weight: 400;
-			color: #f5f5f5;
-			margin: 0 0 20px;
-		}
-		#cookie-banner .cookie-body a {
-			color: #00d084;
-			text-decoration: none;
-			font-style: italic;
-		}
-		#cookie-banner .cookie-body a:hover {
-			text-decoration: underline;
-		}
-		#cookie-banner .cookie-btn {
-			display: block;
-			width: 100%;
-			padding: 14px 20px;
-			background: #00d084;
-			color: #00130c;
-			border: none;
-			border-top-left-radius: 12px;
-			border-bottom-right-radius: 12px;
-			font-family: "Gilroy", "Roboto", sans-serif;
-			font-size: 16px;
-			font-weight: 500;
-			cursor: pointer;
-			text-align: center;
-			transition: opacity 0.2s ease;
-		}
-		#cookie-banner .cookie-btn:hover {
-			opacity: 0.8;
-		}
-		@media (max-width: 480px) {
-			#cookie-banner {
-				bottom: 16px;
-				left: 16px;
-				right: 16px;
-				width: auto;
-			}
-		}
-	</style>
-
-	<div id="cookie-banner" role="dialog" aria-label="Уведомление об использовании файлов cookie">
-		<button class="cookie-close" onclick="declineCookies()" aria-label="Отклонить и закрыть">&#x2715;</button>
-		<div class="cookie-header">
-			<div class="cookie-icon">🍪</div>
-			<div class="cookie-title">
-				<strong>Файлы Cookie</strong>
-				<span>Ваша приватность важна</span>
-			</div>
-		</div>
-		<div class="cookie-divider"></div>
-		<p class="cookie-body">
-			Сайт использует файлы cookie и сервис статистики Яндекс.Метрика для анализа посещаемости и улучшения работы сайта. Нажимая «Принять», вы даёте согласие на их использование в соответствии с <a href="politika-obrabotki-pd.html">Политикой&nbsp;конфиденциальности</a>. Отказаться можно, закрыв уведомление крестиком, — в этом случае аналитические cookie использоваться не будут.
-		</p>
-		<button class="cookie-btn" onclick="acceptCookies()">Принять</button>
-	</div>
-
-	<script>
-		(function () {
-			var COOKIE_VERSION = '2';
-			try {
-				var v = localStorage.getItem('cookieAcceptedVersion');
-				var c = localStorage.getItem('cookieAccepted');
-				if (v === COOKIE_VERSION && (c === 'true' || c === 'false')) {
-					var b = document.getElementById('cookie-banner');
-					if (b) b.classList.add('hidden');
-				} else {
-					localStorage.removeItem('cookieAccepted');
-					localStorage.removeItem('cookieAcceptedVersion');
-				}
-			} catch (e) {}
-		})();
-		function acceptCookies() {
-			try {
-				localStorage.setItem('cookieAccepted', 'true');
-				localStorage.setItem('cookieAcceptedVersion', '2');
-			} catch (e) {}
-			var b = document.getElementById('cookie-banner');
-			if (b) b.classList.add('hidden');
-			if (typeof window.loadAnalytics === 'function') {
-				window.loadAnalytics();
-			}
-		}
-		function declineCookies() {
-			try {
-				localStorage.setItem('cookieAccepted', 'false');
-				localStorage.setItem('cookieAcceptedVersion', '2');
-			} catch (e) {}
-			var b = document.getElementById('cookie-banner');
-			if (b) b.classList.add('hidden');
-		}
-	</script>
-	<!-- ═══════════ /Cookie Banner ═══════════ -->
 </body>
 
 </html>
