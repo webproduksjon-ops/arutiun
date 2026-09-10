@@ -2314,17 +2314,3 @@ footer {
 }
 
 
-
-/* Content restructuring additions — preserve the original palette and typography. */
-.restructure-block { margin: 72px 0; padding: 46px 36px; border: 1px solid var(--greenLight-1); border-top-left-radius: 34px; border-bottom-right-radius: 34px; }
-.restructure-block h1 { margin-bottom: 18px; }
-.restructure-block h2 { color: var(--white); font-size: 28px; font-weight: 500; margin-bottom: 12px; }
-.restructure-block p { color: var(--white); line-height: 1.65; }
-.restructure-lead { color: var(--greenLight-2) !important; font-size: 20px; margin-bottom: 28px; }
-.restructure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin: 28px 0; }
-.restructure-grid > div { border-top: 1px solid var(--greenLight-1); padding-top: 20px; }
-.video-section { background: var(--greenLight-1); }
-.video-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
-.video-links a { color: var(--greenLight-2); border: 1px solid var(--greenLight-2); border-top-left-radius: 10px; border-bottom-right-radius: 10px; padding: 12px 18px; }
-.video-links a:hover { background: var(--greenLight-2); color: var(--green); }
-@media (max-width: 900px) { .menu { gap: 16px; flex-wrap: wrap; justify-content: center; } .restructure-grid { grid-template-columns: 1fr; } }
