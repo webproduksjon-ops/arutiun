@@ -12,3 +12,6 @@
 
 /* Readability pass: keep display type expressive without overwhelming the first viewport. */
 .hero-copy h1,.inner-hero h1{font-size:clamp(46px,5.2vw,74px);max-width:760px}.hero-lead,.inner-hero p{max-width:580px}.section-intro h2,.split-feature h2,.result-grid h2,.program-grid h2,.diagnostic-grid h2,.contact-grid h2{font-size:clamp(38px,4.2vw,58px);max-width:560px}.cta-band h2{font-size:clamp(36px,4.2vw,56px);max-width:580px}@media(max-width:760px){.hero-copy h1,.inner-hero h1{font-size:clamp(44px,12vw,64px)}.section-intro h2,.split-feature h2,.result-grid h2,.program-grid h2,.diagnostic-grid h2,.contact-grid h2{font-size:clamp(36px,10vw,50px)}}
+
+/* Two-line display rhythm and section breathing room. */
+h1,h2,h3,blockquote{ text-wrap:balance }.hero-copy h1,.inner-hero h1{max-width:700px}.inner-hero h1{line-height:1.02}.quote-section blockquote{max-width:850px;font-size:clamp(30px,3.4vw,48px);line-height:1.14}.cta-band{margin-top:88px;margin-bottom:112px}.cta-band p{max-width:560px}.section-dark + .cta-band{margin-top:96px}@media(max-width:760px){.quote-section blockquote{font-size:clamp(28px,7.5vw,40px);line-height:1.16}.cta-band{margin-top:56px;margin-bottom:72px}.section-dark + .cta-band{margin-top:64px}}
