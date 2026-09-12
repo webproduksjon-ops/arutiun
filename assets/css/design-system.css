@@ -498,10 +498,13 @@ blockquote cite { display: block; margin-top: 26px; color: var(--greenLight-2); 
     touch-action: none;
   }
   .menu-backdrop[hidden] { display: none; }
+  .site-nav, .site-nav > *, .site-nav summary, .site-nav a { min-width: 0; max-width: 100%; box-sizing: border-box; }
   .nav-primary, .nav-more, .nav-cta { width: 100%; }
-  .nav-primary, .nav-more summary, .nav-cta { min-height: 48px; padding: 14px 12px; }
+  .nav-primary, .nav-more summary, .nav-cta { min-height: 48px; padding: 14px 12px; font: inherit; line-height: 1.25; }
   .nav-more { border-top: 1px solid var(--line); }
-  .nav-more-panel { max-height: none; overflow: visible; }
-  .nav-cta { margin-top: 8px; }
+  .nav-more-panel { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; min-width: 0; max-width: 100%; max-height: none; margin: 0; padding: 12px 12px 6px; overflow: visible; }
+  .nav-more-group { min-width: 0; width: 100%; }
+  .nav-more-group .nav-link { width: 100%; overflow-wrap: anywhere; }
+  .nav-cta { width: 100%; margin-top: 8px; }
   body.menu-is-open { overflow: hidden; }
 }

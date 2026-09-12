@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     syncHeaderHeight();
     const closeMenu = ({ restoreFocus = false } = {}) => {
       nav.classList.remove('is-open');
+      nav.querySelectorAll('.nav-more').forEach((details) => { details.open = false; });
       backdrop.hidden = true;
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Открыть меню');
