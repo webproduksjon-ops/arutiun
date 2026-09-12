@@ -17,6 +17,7 @@ The site is organized into focused page-level routes rather than one long page:
 | Video and ideas | `video.html` |
 | Materials hub | `materialy.html` |
 | Online work | `online.html` |
+| Format and first meeting | `format.html` |
 | Reviews and cases | `cases.html` |
 | Diagnostic meeting | `diagnostic.html` |
 | Contacts | `contact.html` |
@@ -47,6 +48,8 @@ Email and Telegram notifications are disabled automatically unless their require
 The repository now keeps site-wide SEO settings in `site-seo.json`, future editorial source files in `content/pages/`, and migration mappings in `redirects.json`. Use `python3 scripts/create-text-page.py <slug> <title> <description>` to scaffold a new Markdown page without copying a full HTML document. Set `index: true` only after editorial approval, then run `python3 scripts/build-content.py` to render approved Markdown into `materialy/<slug>.html`. The scaffold is intentionally unpublished until its content, author, links, and ethical review are complete.
 
 Run `python3 scripts/generate-sitemap.py` after approving indexable routes. Run `python3 scripts/validate-seo.py` before deployment; it checks the ten approved core routes for titles, descriptions, canonicals, one H1, local link targets, and valid sitemap XML. The current build also supplies Open Graph metadata, Twitter Card metadata, Person/Breadcrumb JSON-LD, and crawl policies for legal and error pages.
+
+The first approved editorial material is generated at `materialy/pervaya-vstrecha.html` from `content/pages/pervaya-vstrecha.md`. GitHub Actions runs the content builder, sitemap generator, and SEO validator on pushes and pull requests through `.github/workflows/seo.yml`.
 
 The current GitHub Pages hostname remains the canonical origin in `site-seo.json` until the production domain is configured. Before moving to `arutiun.ru`, change the canonical origin, regenerate the sitemap, update robots and social URLs, preserve existing paths, and implement direct server-side redirects for any changed URLs.
 

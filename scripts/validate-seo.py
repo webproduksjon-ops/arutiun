@@ -5,8 +5,8 @@ import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
 failures = []
-core = ['index.html', 'entrepreneurs.html', 'individual.html', 'approach.html', 'about.html', 'kasuti.html', 'video.html', 'cases.html', 'diagnostic.html', 'contact.html', 'materialy.html', 'online.html']
-pages = [root / name for name in core]
+core = ['index.html', 'entrepreneurs.html', 'individual.html', 'approach.html', 'about.html', 'kasuti.html', 'video.html', 'cases.html', 'diagnostic.html', 'contact.html', 'materialy.html', 'online.html', 'format.html']
+pages = [root / name for name in core] + sorted((root / 'materialy').glob('*.html'))
 for page in pages:
     text = page.read_text(encoding="utf-8", errors="ignore")
     if not re.search(r"<title>[^<]+</title>", text): failures.append(f"{page.name}: missing title")

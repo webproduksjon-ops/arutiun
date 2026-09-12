@@ -1,0 +1,24 @@
+name: SEO validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build approved content pages
+        run: python3 scripts/build-content.py
+      - name: Regenerate sitemap
+        run: python3 scripts/generate-sitemap.py
+      - name: Validate SEO and links
+        run: python3 scripts/validate-seo.py
