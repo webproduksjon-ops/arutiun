@@ -6,6 +6,10 @@ section: Работа и лидерство
 route: entrepreneurs.html
 updated: 2026-09-12
 index: false
+intent: Информационный запрос руководителя о хронической перегрузке
+query: как понять что руководитель выгорел
+parent: entrepreneurs.html
+cta: Обсудить запрос
 ---
 
 # Когда работа перестаёт заканчиваться

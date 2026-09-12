@@ -22,3 +22,5 @@ jobs:
         run: python3 scripts/generate-sitemap.py
       - name: Validate SEO and links
         run: python3 scripts/validate-seo.py
+      - name: Validate migration configuration
+        run: python3 scripts/validate-migration.py
