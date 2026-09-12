@@ -10,6 +10,7 @@ intent: Информационный запрос руководителя о в
 query: выгорание руководителя
 parent: entrepreneurs.html
 cta: Обсудить запрос
+related: psihoterapiya-pri-neopredelennosti
 ---
 # Выгорание руководителя
 

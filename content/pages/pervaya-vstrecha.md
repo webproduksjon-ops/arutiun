@@ -9,6 +9,7 @@ index: true
 intent: Информационный запрос о первой консультации
 query: что происходит на первой встрече с психотерапевтом
 parent: format.html
+related: kbt-emdr-integrativnyj-podhod
 cta: Записаться на диагностическую встречу
 ---
 

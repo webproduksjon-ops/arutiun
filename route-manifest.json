@@ -24,5 +24,11 @@
     "politika-send-form.html",
     "politika-send-review.html",
     "404.html"
-  ]
+  ],
+  "policy": {
+    "indexable_core": "Public service, conversion, media, and hub pages are indexable and included in sitemap.xml.",
+    "indexable_articles": "Approved Markdown articles are indexable and included in sitemap.xml.",
+    "legal_noindex": "Human-readable legal documents remain noindex,follow and are linked from the footer.",
+    "technical_noindex": "Form-processing endpoints and 404.html remain noindex,follow and are excluded from the sitemap."
+  }
 }

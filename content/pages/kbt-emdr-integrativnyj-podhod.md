@@ -9,6 +9,7 @@ index: true
 intent: Информационный запрос о методах психотерапии и выборе подхода
 query: чем отличается кпт от emdr
 parent: approach.html
+related: pervaya-vstrecha
 cta: Обсудить формат работы
 ---
 # КПТ, EMDR и выбор подхода

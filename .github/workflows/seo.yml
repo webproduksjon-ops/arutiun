@@ -24,6 +24,8 @@ jobs:
         run: python3 scripts/validate-route-manifest.py
       - name: Validate canonical offer
         run: python3 scripts/validate-offer.py
+      - name: Validate structured data
+        run: python3 scripts/validate-structured-data.py
       - name: Validate SEO and links
         run: python3 scripts/validate-seo.py
       - name: Validate migration configuration

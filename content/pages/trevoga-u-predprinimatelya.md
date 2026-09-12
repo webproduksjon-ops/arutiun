@@ -10,6 +10,7 @@ intent: Информационный запрос предпринимателя
 query: тревога у предпринимателя
 parent: entrepreneurs.html
 cta: Обсудить запрос
+related: vygoranie-rukovoditelya
 ---
 # Тревога у предпринимателя
 

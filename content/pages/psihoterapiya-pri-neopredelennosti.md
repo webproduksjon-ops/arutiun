@@ -10,6 +10,7 @@ intent: Информационный запрос о тревоге перед �
 query: как справляться с неопределённостью
 parent: individual.html
 cta: Обсудить запрос
+related: kak-ponyat-nuzhna-li-psihoterapiya
 ---
 # Как выдерживать неопределённость
 
