@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Build approved Markdown files from content/pages into static materialy/*.html pages."""
+from html import escape
+from pathlib import Path
+import json
+import re
+
+root = Path(__file__).resolve().parents[1]
+config = json.loads((root / 'site-seo.json').read_text(encoding='utf-8'))
+base = config['canonical_host'].rstrip('/')
+out = root / 'materialy'
+out.mkdir(exist_ok=True)
+
+def parse_page(path):
+    raw = path.read_text(encoding='utf-8')
+    if not raw.startswith('---\n'):
+        raise ValueError(f'{path}: front matter is required')
+    _, front, body = raw.split('---\n', 2)
+    data = {}
+    for line in front.splitlines():
+        if ':' in line:
+            key, value = line.split(':', 1)
+            data[key.strip()] = value.strip()
+    return data, body.strip()
+
+def render_body(body):
+    result = []
+    paragraph = []
+    def flush():
+        if paragraph:
+            text = ' '.join(paragraph).strip()
+            text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', escape(text))
+            result.append(f'<p>{text}</p>')
+            paragraph.clear()
+    for line in body.splitlines():
+        line = line.strip()
+        if not line:
+            flush()
+        elif line.startswith('## '):
+            flush(); result.append(f'<h2>{escape(line[3:])}</h2>')
+        elif line.startswith('# '):
+            flush(); result.append(f'<h1>{escape(line[2:])}</h1>')
+        elif line.startswith('> '):
+            flush(); result.append(f'<blockquote>{escape(line[2:])}</blockquote>')
+        else:
+            paragraph.append(line)
+    flush()
+    return '\n'.join(result)
+
+def page_html(data, body_html):
+    slug = data['slug']
+    title = data['title']
+    description = data['description']
+    canonical = f'{base}/materialy/{slug}.html'
+    return f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} — Арутюн Панчоян</title><meta name="description" content="{escape(description)}"><link rel="canonical" href="{canonical}"><meta property="og:locale" content="ru_RU"><meta property="og:type" content="article"><meta property="og:site_name" content="Арутюн Панчоян"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{base}/{config['social_image']}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'Article','headline':title,'description':description,'author':{'@type':'Person','name':'Арутюн Панчоян'},'mainEntityOfPage':canonical}, ensure_ascii=False)}</script><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/multipage.css"></head><body><a class="skip-link" href="#main-content">Перейти к содержанию</a><div class="site-frame"><header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="Арутюн Панчоян — на главную"><span class="brand-mark">А</span><span>АРУТЮН ПАНЧОЯН</span></a><button type="button" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button><nav class="site-nav" aria-label="Основная навигация"><a class="nav-link" href="../entrepreneurs.html">Предпринимателям</a><a class="nav-link" href="../individual.html">Индивидуально</a><a class="nav-link" href="../approach.html">Подход</a><a class="nav-link" href="../about.html">Обо мне</a><a class="nav-link" href="../video.html">Материалы</a><a class="nav-cta" href="../diagnostic.html">Диагностическая встреча ↗</a></nav></div></header><main id="main-content"><section class="inner-hero"><div class="container"><div class="breadcrumb"><a href="../index.html">Главная</a><span>›</span><span>{escape(data.get('section','Материалы'))}</span></div>{body_html.split('</h1>',1)[0]+'</h1>' if '</h1>' in body_html else '<h1>'+escape(title)+'</h1>'}</div></section><article class="section"><div class="container article-content">{body_html.replace(body_html.split('</h1>',1)[0]+'</h1>','',1) if '</h1>' in body_html else body_html}<p><a class="button button-primary" href="../{escape(data.get('route','diagnostic.html'))}">Обсудить запрос ↗</a></p></div></article></main><footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="../index.html"><span class="brand-mark">А</span><span>АРУТЮН ПАНЧОЯН</span></a><p class="footer-note">Психотерапия для предпринимателей, руководителей и людей в сложных жизненных периодах.</p></div><div class="footer-links"><a href="../contact.html">Контакты</a><a href="../diagnostic.html">Записаться</a><a href="../cases.html">Отзывы и кейсы</a><a href="../politika-obrabotki-pd.html">Политика конфиденциальности</a></div></div></footer></div><script src="../assets/js/site.js"></script></body></html>'''
+
+built = 0
+for path in sorted((root / 'content/pages').glob('*.md')):
+    if path.name == 'README.md':
+        continue
+    data, body = parse_page(path)
+    if data.get('index', 'false').lower() != 'true':
+        continue
+    (out / f"{data['slug']}.html").write_text(page_html(data, render_body(body)), encoding='utf-8')
+    built += 1
+print(f'built {built} approved content pages')
