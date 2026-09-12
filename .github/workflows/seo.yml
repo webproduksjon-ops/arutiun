@@ -24,3 +24,5 @@ jobs:
         run: python3 scripts/validate-seo.py
       - name: Validate migration configuration
         run: python3 scripts/validate-migration.py
+      - name: Validate responsive and conversion contract
+        run: python3 scripts/validate-viewport-contract.py
