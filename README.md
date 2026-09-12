@@ -40,6 +40,14 @@ Set these environment variables in the hosting environment rather than committin
 
 Email and Telegram notifications are disabled automatically unless their required variables are set.
 
+## SEO and future text pages
+
+The repository now keeps site-wide SEO settings in `site-seo.json`, future editorial source files in `content/pages/`, and migration mappings in `redirects.json`. Use `python3 scripts/create-text-page.py <slug> <title> <description>` to scaffold a new Markdown page without copying a full HTML document. The scaffold is intentionally unpublished until its content, author, links, and ethical review are complete.
+
+Run `python3 scripts/generate-sitemap.py` after approving indexable routes. Run `python3 scripts/validate-seo.py` before deployment; it checks the ten approved core routes for titles, descriptions, canonicals, one H1, local link targets, and valid sitemap XML. The current build also supplies Open Graph metadata, Twitter Card metadata, Person/Breadcrumb JSON-LD, and crawl policies for legal and error pages.
+
+The current GitHub Pages hostname remains the canonical origin in `site-seo.json` until the production domain is configured. Before moving to `arutiun.ru`, change the canonical origin, regenerate the sitemap, update robots and social URLs, preserve existing paths, and implement direct server-side redirects for any changed URLs.
+
 ## Security
 
 Do not commit `.env` files, bot tokens, reCAPTCHA secrets, or production credentials. If credentials have previously been shared or published, rotate them with the relevant provider before deploying.

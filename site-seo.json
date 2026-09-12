@@ -1,0 +1,16 @@
+{
+  "canonical_host": "https://webproduksjon-ops.github.io/arutiun",
+  "future_host": "https://arutiun.ru",
+  "site_name": "Арутюн Панчоян",
+  "locale": "ru_RU",
+  "social_image": "assets/images/arutyun6.jpg",
+  "person": {
+    "name": "Арутюн Панчоян",
+    "jobTitle": "Психолог-психотерапевт",
+    "sameAs": [
+      "https://t.me/Arutiun_Keropovich",
+      "https://vk.com/kbtterapevt",
+      "https://www.instagram.com/arutiun.keropovich/"
+    ]
+  }
+}
