@@ -72,13 +72,11 @@ h1, h2, h3, blockquote { text-wrap: balance; }
 .section-intro > p, .split-feature p, .result-grid p, .program-grid p, .diagnostic-grid p, .contact-grid p { max-width: 470px; color: var(--ink-muted); font-size: 18px; line-height: 1.6; }
 .route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .route-card { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; min-height: 320px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); color: var(--white); transition: transform .25s var(--ease), background .25s var(--ease); }
-.route-card-dark { background: var(--surface-soft); color: var(--white); }
 .route-card:hover { transform: translateY(-3px); background: #116149; }
 .route-card .card-index { display: block; margin-bottom: 26px; color: var(--accent-muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-.route-card-dark .card-index { color: var(--accent-muted); }
 .route-card h3 { max-width: 540px; margin: 0; color: inherit; font-size: clamp(32px, 3.1vw, 48px); font-weight: 500; line-height: 1.04; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .route-card p { max-width: 470px; margin: 20px 0 0; color: inherit; font-size: 17px; line-height: 1.5; opacity: .86; overflow-wrap: anywhere; }
-.route-card .card-link, .route-card-dark .card-link { margin-top: auto; padding-top: 28px; color: var(--accent-muted); font-size: 14px; font-weight: 600; }
+.route-card .card-link { margin-top: auto; padding-top: 28px; color: var(--accent-muted); font-size: 14px; font-weight: 600; }
 .card-link, .text-link { color: var(--greenLight-2); font-size: 15px; font-weight: 600; }
 .quote-section { padding: 76px 0; background: var(--soft); }
 blockquote { max-width: 850px; margin: 0; color: var(--white); font-size: clamp(30px, 3.4vw, 48px); font-weight: 400; line-height: 1.14; overflow-wrap: anywhere; }
