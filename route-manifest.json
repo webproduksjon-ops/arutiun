@@ -1,0 +1,28 @@
+{
+  "canonical_host": "https://webproduksjon-ops.github.io/arutiun",
+  "indexable_core": [
+    "index.html",
+    "entrepreneurs.html",
+    "individual.html",
+    "approach.html",
+    "about.html",
+    "kasuti.html",
+    "video.html",
+    "cases.html",
+    "diagnostic.html",
+    "contact.html",
+    "materialy.html",
+    "online.html",
+    "format.html"
+  ],
+  "indexable_articles_glob": "materialy/*.html",
+  "legal_noindex": [
+    "politika-obrabotki-pd.html",
+    "polzovatelskoe-soglashenie.html"
+  ],
+  "technical_noindex": [
+    "politika-send-form.html",
+    "politika-send-review.html",
+    "404.html"
+  ]
+}

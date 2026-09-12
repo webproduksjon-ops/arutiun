@@ -383,3 +383,18 @@ blockquote cite { display: block; margin-top: 26px; color: var(--greenLight-2); 
   .inner-hero h1 { font-size: clamp(38px, 11vw, 50px); }
   .content-card, .form-card, .offer-card { padding: 22px 20px; }
 }
+
+/* Release A/B system rules */
+.hero-cta { display: inline-flex; margin-top: 22px; }
+.nav-more summary:focus-visible, .menu-toggle:focus-visible { outline: 2px solid var(--greenLight-2); outline-offset: 4px; }
+.nav-more-panel { max-width: min(530px, calc(100vw - 32px)); }
+.media-image { min-height: 300px; background: var(--surface-soft); }
+.media-image-failed { display: grid; place-items: center; background: linear-gradient(135deg, var(--surface-soft), var(--surface)); }
+.media-image-failed::before { content: 'Видео скоро'; color: var(--ink-muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.media-image-failed .play-button { display: none; }
+@media (max-width: 760px) {
+  .hero-cta { width: 100%; box-sizing: border-box; margin-top: 18px; }
+  .site-nav.is-open { max-height: calc(100svh - 74px); overflow-y: auto; overscroll-behavior: contain; }
+  .media-image { min-height: 220px; }
+  body.has-mobile-sticky { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+}

@@ -20,6 +20,10 @@ jobs:
         run: python3 scripts/build-content.py
       - name: Regenerate sitemap
         run: python3 scripts/generate-sitemap.py
+      - name: Validate route manifest
+        run: python3 scripts/validate-route-manifest.py
+      - name: Validate canonical offer
+        run: python3 scripts/validate-offer.py
       - name: Validate SEO and links
         run: python3 scripts/validate-seo.py
       - name: Validate migration configuration

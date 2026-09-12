@@ -13,7 +13,7 @@ for width in ('320','375','390','430','760','1024','1280','1440'):
         continue
 for required in ['env(safe-area-inset-bottom)', '.nav-more-panel', '.offer-card', 'overflow-x: clip']:
     if required not in css: errors.append(f'missing CSS contract: {required}')
-for required in ['content-card', 'media-card', 'is-keyboard', 'mobile_diagnostic_cta_click']:
+for required in ['content-card', 'media-card', 'keyboard =', 'mobile_diagnostic_cta_click']:
     if required not in js: errors.append(f'missing JS contract: {required}')
 if list(root.glob('yandex*.html')) or list(root.glob('zen *.html')):
     errors.append('technical verification HTML remains in the public root')

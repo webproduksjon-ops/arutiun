@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.site-nav');
   const currentFile = window.location.pathname.split('/').pop() || 'index.html';
   const isDiagnostic = currentFile === 'diagnostic.html';
+  const isMaterialsHub = currentFile === 'materialy.html';
 
   const track = (name, detail = {}) => {
     const payload = { event: `arutiun_${name}`, ...detail };
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       track(open ? 'menu_open' : 'menu_close');
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+    nav.querySelectorAll('.nav-more').forEach((details) => details.addEventListener('toggle', () => { if (!details.open) return; nav.querySelectorAll('.nav-more').forEach((other) => { if (other !== details) other.open = false; }); }));
     document.addEventListener('pointerup', (event) => {
       if (nav.classList.contains('is-open') && !nav.contains(event.target) && !toggle.contains(event.target)) {
         closeMenu({ restoreFocus: true });
@@ -78,42 +80,46 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!isDiagnostic && window.matchMedia('(max-width: 760px)').matches) {
     const routePrefix = window.location.pathname.includes('/materialy/') ? '../' : '';
     const sticky = document.createElement('a');
-    sticky.className = 'mobile-sticky-cta';
+    sticky.className = 'mobile-sticky-cta is-hidden';
     sticky.href = `${routePrefix}diagnostic.html`;
     sticky.dataset.event = 'mobile_diagnostic_cta_click';
     sticky.innerHTML = '<span>Записаться на встречу</span><span aria-hidden="true">↗</span>';
+    sticky.setAttribute('aria-label', 'Записаться на диагностическую встречу');
     document.body.appendChild(sticky);
     document.body.classList.add('has-mobile-sticky');
-    if (currentFile === 'materialy.html') sticky.classList.add('is-hidden');
     sticky.addEventListener('click', () => track(sticky.dataset.event));
 
+    const hero = document.querySelector('.hero-home, .inner-hero');
     const watched = [...document.querySelectorAll('.form-card, .cta-band')];
-    if (watched.length && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries.some((entry) => entry.isIntersecting);
-        sticky.classList.toggle('is-hidden', visible);
-      }, { threshold: 0.18, rootMargin: '0px 0px -64px 0px' });
-      watched.forEach((element) => observer.observe(element));
-    }
     const overlapTargets = [...document.querySelectorAll('.card-link, .text-link, .content-card, .media-card, .article-content p, .article-content h2, .form-card input, .form-card select, .form-card textarea, .form-card button')];
+    let heroVisible = Boolean(hero);
+    let actionVisible = false;
+    let overlap = false;
+    let keyboard = false;
+    const render = () => sticky.classList.toggle('is-hidden', heroVisible || actionVisible || overlap || keyboard);
+    if (hero && 'IntersectionObserver' in window) {
+      const heroObserver = new IntersectionObserver((entries) => { heroVisible = entries.some((entry) => entry.isIntersecting); render(); }, { threshold: 0.08 });
+      heroObserver.observe(hero);
+    } else { heroVisible = false; }
+    if (watched.length && 'IntersectionObserver' in window) {
+      const actionObserver = new IntersectionObserver((entries) => { actionVisible = entries.some((entry) => entry.isIntersecting); render(); }, { threshold: 0.18, rootMargin: '0px 0px -64px 0px' });
+      watched.forEach((element) => actionObserver.observe(element));
+    }
     const updateOverlap = () => {
       const edge = window.innerHeight - 112;
-      const overlap = overlapTargets.some((element) => {
-        const rect = element.getBoundingClientRect();
-        return rect.top < window.innerHeight && rect.bottom > edge;
-      });
-      sticky.classList.toggle('is-hidden', overlap || sticky.classList.contains('is-keyboard'));
+      overlap = overlapTargets.some((element) => { const rect = element.getBoundingClientRect(); return rect.top < window.innerHeight && rect.bottom > edge; });
+      render();
     };
+    const updateKeyboardState = () => { const active = document.activeElement; keyboard = Boolean(active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)); render(); };
     window.addEventListener('scroll', updateOverlap, { passive: true });
-    window.addEventListener('resize', updateOverlap);
-    updateOverlap();
-    window.setTimeout(updateOverlap, 250);
-    const updateKeyboardState = () => {
-      const active = document.activeElement;
-      sticky.classList.toggle('is-keyboard', Boolean(active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)));
-    };
-    window.addEventListener('resize', updateKeyboardState);
+    window.addEventListener('resize', () => { updateOverlap(); updateKeyboardState(); });
     document.addEventListener('focusin', updateKeyboardState);
     document.addEventListener('focusout', updateKeyboardState);
+    updateOverlap();
+    window.setTimeout(() => { updateOverlap(); updateKeyboardState(); }, 350);
   }
+
+  document.querySelectorAll('.video-cover-image').forEach((image) => {
+    image.addEventListener('error', () => { image.remove(); image.closest('.media-image')?.classList.add('media-image-failed'); });
+  });
 });
