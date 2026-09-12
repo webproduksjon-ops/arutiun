@@ -6,7 +6,7 @@ from xml.sax.saxutils import escape
 root = Path(__file__).resolve().parents[1]
 config = json.loads((root / "site-seo.json").read_text(encoding="utf-8"))
 base = config["canonical_host"].rstrip("/")
-core = ['index.html', 'entrepreneurs.html', 'individual.html', 'approach.html', 'about.html', 'kasuti.html', 'video.html', 'cases.html', 'diagnostic.html', 'contact.html']
+core = ['index.html', 'entrepreneurs.html', 'individual.html', 'approach.html', 'about.html', 'kasuti.html', 'video.html', 'cases.html', 'diagnostic.html', 'contact.html', 'materialy.html', 'online.html']
 urls = []
 for name in core:
     path = root / name

@@ -60,3 +60,6 @@ main p,main small{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidde
 
 /* Natural endings: never append an ellipsis to meaningful visitor-facing copy. */
 main p,main small{display:block;overflow:visible}.route-card h3{display:block;overflow:visible}.section-intro>p,.hero-lead,.inner-hero p,.cta-band p,.route-card p{display:block;overflow:visible}
+
+/* Editorial hub and online-work cards. */
+.content-card{padding:32px;background:var(--greenLight-1);border-top-left-radius:28px;border-bottom-right-radius:28px;min-width:0}.content-card h2{color:var(--white);font-size:clamp(28px,3vw,42px);line-height:1.08;margin:16px 0}.content-card p{color:var(--ink-soft);line-height:1.55}.content-card .text-link{display:inline-block;margin-top:22px;color:var(--greenLight-2)}.content-card:nth-child(even){background:var(--white)}.content-card:nth-child(even) h2,.content-card:nth-child(even) p{color:var(--green)}.content-card:nth-child(even) .text-link{color:var(--greenLight-1)}@media(max-width:760px){.content-card{padding:25px 22px}.content-card h2{font-size:clamp(28px,8vw,38px)}.content-card p{font-size:16px}.content-grid{gap:14px}}

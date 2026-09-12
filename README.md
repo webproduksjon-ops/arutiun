@@ -15,6 +15,8 @@ The site is organized into focused page-level routes rather than one long page:
 | About and qualifications | `about.html` |
 | “К СУТИ” program | `kasuti.html` |
 | Video and ideas | `video.html` |
+| Materials hub | `materialy.html` |
+| Online work | `online.html` |
 | Reviews and cases | `cases.html` |
 | Diagnostic meeting | `diagnostic.html` |
 | Contacts | `contact.html` |
