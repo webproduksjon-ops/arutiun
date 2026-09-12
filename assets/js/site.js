@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.18, rootMargin: '0px 0px -64px 0px' });
       watched.forEach((element) => observer.observe(element));
     }
-    const overlapTargets = [...document.querySelectorAll('.card-link, .text-link, .article-content p, .article-content h2, .form-card input, .form-card select, .form-card textarea, .form-card button')];
+    const overlapTargets = [...document.querySelectorAll('.card-link, .text-link, .content-card, .media-card, .article-content p, .article-content h2, .form-card input, .form-card select, .form-card textarea, .form-card button')];
     const updateOverlap = () => {
       const edge = window.innerHeight - 112;
       const overlap = overlapTargets.some((element) => {
