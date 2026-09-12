@@ -22,7 +22,7 @@ The site is organized into focused page-level routes rather than one long page:
 | Diagnostic meeting | `diagnostic.html` |
 | Contacts | `contact.html` |
 
-The original dark-green/neon-green palette, Gilroy font files, corner treatments, image library, legal pages, and legacy form handlers are retained. `assets/css/multipage.css` adds only the layout and responsive behavior needed by the new page architecture.
+The active public site uses `assets/css/design-system.css` as its single canonical stylesheet. It contains the Gilroy foundation, palette, type scale, layout, components, responsive behavior, and interaction states in one place. Legacy legal/form pages are retained separately for compatibility.
 
 ## Hosting requirements
 
