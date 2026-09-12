@@ -1,0 +1,21 @@
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+await page.goto('http://127.0.0.1:8105/index.html', { waitUntil: 'networkidle' });
+await page.locator('.menu-toggle').click();
+await page.locator('.site-nav').waitFor({ state: 'visible' });
+await page.locator('.site-nav .nav-primary').first().click();
+await page.waitForURL('**/entrepreneurs.html');
+await page.goto('http://127.0.0.1:8105/index.html', { waitUntil: 'networkidle' });
+await page.locator('.menu-toggle').click();
+await page.locator('.nav-more summary').click();
+if (!(await page.locator('.nav-more').getAttribute('open'))?.includes('')) throw new Error('More menu did not open');
+await page.locator('.nav-more a[href="approach.html"]').click();
+await page.waitForURL('**/approach.html');
+await page.goto('http://127.0.0.1:8105/index.html', { waitUntil: 'networkidle' });
+await page.locator('.menu-toggle').click();
+await page.locator('.menu-backdrop').click({ position: { x: 5, y: 5 } });
+if (await page.locator('.site-nav').evaluate((element) => element.classList.contains('is-open'))) throw new Error('Backdrop did not close menu');
+console.log('mobile menu interaction passed');
+await browser.close();

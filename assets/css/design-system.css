@@ -466,7 +466,8 @@ blockquote cite { display: block; margin-top: 26px; color: var(--greenLight-2); 
 
 @media (max-width: 760px) {
   :root { --header-height: 70px; }
-  .site-header { z-index: 40; }
+  /* Keep the complete header stacking context above the page backdrop. */
+  .site-header { z-index: 42; }
   .header-inner { min-height: 70px; }
   .menu-toggle { position: relative; z-index: 43; }
   .site-nav {
@@ -485,7 +486,7 @@ blockquote cite { display: block; margin-top: 26px; color: var(--greenLight-2); 
     border-radius: 10px;
     background: rgba(0, 19, 12, .98);
     box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
-    z-index: 42;
+    z-index: 43;
   }
   .site-nav.is-open { display: grid; gap: 4px; }
   .menu-backdrop {
