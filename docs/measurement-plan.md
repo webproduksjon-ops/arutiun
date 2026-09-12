@@ -1,14 +1,29 @@
 # Conversion measurement plan
 
-The static site now emits conversion events into `window.dataLayer` and as `arutiun:conversion` browser events. A future analytics provider can consume these events without changing the page markup.
+The static site emits privacy-safe events into `window.dataLayer` and as `arutiun:conversion` browser events. The site does not send names, contact details, form text, ages, cities, or issue selections to analytics.
 
-| Event | Meaning | Main decision |
+| Event | Meaning | Dimensions |
 | --- | --- | --- |
-| `arutiun_diagnostic_cta_click` | Visitor clicks a diagnostic-meeting link | Which page creates intent? |
-| `arutiun_mobile_diagnostic_cta_click` | Visitor clicks the mobile sticky CTA | Does persistent mobile access improve conversion? |
-| `arutiun_telegram_click` | Visitor opens Telegram | How many visitors prefer direct messaging? |
-| `arutiun_form_start` | Visitor focuses the first form field | How many visitors begin the form? |
-| `arutiun_form_error` | Browser validation blocks submission | Which fields create friction? |
-| `arutiun_form_submit` | Visitor submits the form | Which page and device produced a lead? |
+| `arutiun_diagnostic_cta_click` | Visitor clicks a diagnostic-meeting link | route, device |
+| `arutiun_mobile_diagnostic_cta_click` | Visitor clicks the mobile sticky CTA | route, device |
+| `arutiun_telegram_click` | Visitor opens Telegram | route, device |
+| `arutiun_form_start` | Visitor focuses the first form field | route, device |
+| `arutiun_form_error` | Browser validation blocks submission | route, device, field name only |
+| `arutiun_form_submit` | Visitor submits the form to the server | route, device |
+| `arutiun_form_success` | The server returns the exact success response | route, device |
+| `arutiun_form_server_error` | The server returns a non-success response | route, device |
+| `arutiun_form_network_error` | The submission request fails at the network layer | route, device |
+| `arutiun_menu_open` | Visitor opens the navigation | route, device |
+| `arutiun_menu_close`, `arutiun_menu_close_outside`, `arutiun_menu_close_escape` | Visitor dismisses navigation | route, device |
 
-The site does not currently send these events to an external analytics vendor. Connect them only after choosing a privacy-appropriate analytics setup and documenting the corresponding privacy notice. A qualified lead remains a business outcome that should be reconciled with actual messages or submissions, not inferred from clicks alone.
+## Qualified contacts
+
+A qualified contact is a business outcome, not something the public browser can infer safely. Reconcile successful form submissions and Telegram conversations in the private operational record. If a future analytics system needs a qualified-contact count, import an aggregate weekly number or fire a manually controlled event without personal identifiers.
+
+## Responsible system and retention
+
+The site currently provides the event layer only. The future analytics destination must be selected by the owner, configured with IP anonymization where available, and documented in the privacy policy before activation. Retain aggregate conversion data only as long as it supports business decisions; do not retain raw form content in analytics.
+
+## QA
+
+Events must fire once per meaningful action. Before connecting an analytics vendor, inspect the browser event stream on the diagnostic page and confirm that no payload contains personal form values.

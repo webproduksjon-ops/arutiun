@@ -230,6 +230,7 @@ if(feedbackForm) {
         }
 
         if (result.trim() === "success") {
+          window.arutiunTrack?.('form_success');
         
           
           showPopup();
@@ -244,6 +245,7 @@ if(feedbackForm) {
               feedbackOverlay.style.display = "none";
           }
         } else {
+          window.arutiunTrack?.('form_server_error');
           alert("Ответ сервера: " + result);
           grecaptcha.reset(captchaWidgetID); 
         }
@@ -253,6 +255,7 @@ if(feedbackForm) {
             submitBtn.value = originalText;
             submitBtn.disabled = false;
         }
+        window.arutiunTrack?.('form_network_error');
         console.error("Ошибка:", error);
         alert("Произошла ошибка сети. Проверьте консоль браузера.");
       });

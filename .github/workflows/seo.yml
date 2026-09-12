@@ -26,9 +26,29 @@ jobs:
         run: python3 scripts/validate-offer.py
       - name: Validate structured data
         run: python3 scripts/validate-structured-data.py
+      - name: Validate measurement contract
+        run: python3 scripts/validate-measurement.py
       - name: Validate SEO and links
         run: python3 scripts/validate-seo.py
       - name: Validate migration configuration
         run: python3 scripts/validate-migration.py
       - name: Validate responsive and conversion contract
         run: python3 scripts/validate-viewport-contract.py
+      - name: Set up Node for browser QA
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Install browser QA runtime
+        run: npm install --no-save playwright@1.55.0
+      - name: Install Chromium for browser QA
+        run: npx playwright install --with-deps chromium
+      - name: Start static server for viewport QA
+        run: python3 -m http.server 8104 >/tmp/arutiun-http.log 2>&1 &
+      - name: Run viewport matrix and screenshot checks
+        run: node scripts/viewport-smoke.mjs
+      - name: Upload viewport QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arutiun-viewport-report
+          path: artifacts/viewport

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isMaterialsHub = currentFile === 'materialy.html';
 
   const track = (name, detail = {}) => {
-    const payload = { event: `arutiun_${name}`, ...detail };
+    const payload = { event: `arutiun_${name}`, route: window.location.pathname, device: window.matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop', ...detail };
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(payload);
     window.dispatchEvent(new CustomEvent('arutiun:conversion', { detail: payload }));
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('focusin', () => {
       if (!started) { started = true; track('form_start'); }
     });
-    form.addEventListener('invalid', () => track('form_error'), true);
+    form.addEventListener('invalid', (event) => track('form_error', { field: event.target?.name || 'unknown' }), true);
     form.addEventListener('submit', () => track('form_submit'));
   });
 

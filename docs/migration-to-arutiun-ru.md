@@ -30,3 +30,18 @@ The route map is intentionally one-to-one. No page should be renamed during the 
 | `/arutiun/materialy/{slug}.html` | `/materialy/{slug}.html` | Preserve path |
 
 The migration is not complete until forms, Telegram links, robots, sitemap, canonical tags, structured data, and analytics all refer to the production environment.
+
+
+## Release E migration package
+
+The repository now includes `docs/redirect-map.csv`, `scripts/switch-canonical-host.py`, and `scripts/crawl-production.py`. Before migration, keep `site-seo.json` on the GitHub Pages host. After the new host is deployed and verified, run:
+
+```bash
+python3 scripts/switch-canonical-host.py https://arutiun.ru
+python3 scripts/build-content.py
+python3 scripts/generate-sitemap.py
+python3 scripts/validate-migration.py
+python3 scripts/crawl-production.py https://arutiun.ru
+```
+
+The old GitHub Pages host should return permanent redirects according to `docs/redirect-map.csv`; do not remove it until the production crawl, canonical checks, sitemap, robots policy, structured data, forms, Telegram links, and analytics have all passed. Submit the new sitemap in Google Search Console, inspect representative service and article URLs, and retain the pre-migration commit for rollback.

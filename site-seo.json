@@ -12,5 +12,20 @@
       "https://vk.com/kbtterapevt",
       "https://www.instagram.com/arutiun.keropovich/"
     ]
-  }
+  },
+  "public_routes": [
+    "index.html",
+    "entrepreneurs.html",
+    "individual.html",
+    "approach.html",
+    "about.html",
+    "kasuti.html",
+    "video.html",
+    "cases.html",
+    "diagnostic.html",
+    "contact.html",
+    "materialy.html",
+    "online.html",
+    "format.html"
+  ]
 }
