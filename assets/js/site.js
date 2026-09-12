@@ -24,8 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (toggle && nav) {
+    const header = document.querySelector('.site-header');
+    const backdrop = document.createElement('div');
+    backdrop.className = 'menu-backdrop';
+    backdrop.hidden = true;
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+    const syncHeaderHeight = () => {
+      if (header) document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`);
+    };
+    syncHeaderHeight();
     const closeMenu = ({ restoreFocus = false } = {}) => {
       nav.classList.remove('is-open');
+      backdrop.hidden = true;
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Открыть меню');
       document.body.classList.remove('menu-is-open');
@@ -33,18 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('is-open');
+      backdrop.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
       document.body.classList.toggle('menu-is-open', open);
+      syncHeaderHeight();
       track(open ? 'menu_open' : 'menu_close');
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
     nav.querySelectorAll('.nav-more').forEach((details) => details.addEventListener('toggle', () => { if (!details.open) return; nav.querySelectorAll('.nav-more').forEach((other) => { if (other !== details) other.open = false; }); }));
-    document.addEventListener('pointerup', (event) => {
-      if (nav.classList.contains('is-open') && !nav.contains(event.target) && !toggle.contains(event.target)) {
-        closeMenu({ restoreFocus: true });
-        track('menu_close_outside');
-      }
+    backdrop.addEventListener('pointerdown', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeMenu({ restoreFocus: true });
+      track('menu_close_outside');
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
@@ -52,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         track('menu_close_escape');
       }
     });
+    window.addEventListener('resize', syncHeaderHeight, { passive: true });
   }
 
   document.querySelectorAll('a[href$=".html"]').forEach((link) => {

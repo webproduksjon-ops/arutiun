@@ -439,3 +439,68 @@ blockquote cite { display: block; margin-top: 26px; color: var(--greenLight-2); 
 @media (max-width: 430px) {
   .trust-panel-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Navigation rebuild: one compact desktop band and a protected mobile drawer. */
+.site-header { z-index: 40; }
+.header-inner { min-height: 70px; gap: 32px; }
+.site-nav { gap: 24px; }
+.nav-primary { font-size: 13px; letter-spacing: .01em; }
+.nav-more summary { padding: 10px 0; }
+.nav-more-panel { top: calc(100% + 10px); min-width: 560px; padding: 22px; }
+.nav-cta { min-height: 42px; padding: 10px 16px; }
+.menu-backdrop { display: none; }
+
+@media (min-width: 761px) {
+  .site-header { box-shadow: 0 8px 24px rgba(0, 19, 12, .12); }
+  .brand { flex: 0 0 auto; }
+  .site-nav { margin-left: auto; }
+}
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .header-inner { gap: 18px; }
+  .site-nav { gap: 14px; }
+  .nav-primary, .nav-more summary, .nav-cta { font-size: 12px; }
+  .nav-more-panel { min-width: 500px; }
+}
+
+@media (max-width: 760px) {
+  :root { --header-height: 70px; }
+  .site-header { z-index: 40; }
+  .header-inner { min-height: 70px; }
+  .menu-toggle { position: relative; z-index: 43; }
+  .site-nav {
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    right: 15px;
+    left: 15px;
+    width: auto;
+    max-height: calc(100svh - var(--header-height) - 26px);
+    margin: 0;
+    padding: 14px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    background: rgba(0, 19, 12, .98);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
+    z-index: 42;
+  }
+  .site-nav.is-open { display: grid; gap: 4px; }
+  .menu-backdrop {
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    display: block;
+    background: rgba(0, 0, 0, .42);
+    z-index: 41;
+    touch-action: none;
+  }
+  .menu-backdrop[hidden] { display: none; }
+  .nav-primary, .nav-more, .nav-cta { width: 100%; }
+  .nav-primary, .nav-more summary, .nav-cta { min-height: 48px; padding: 14px 12px; }
+  .nav-more { border-top: 1px solid var(--line); }
+  .nav-more-panel { max-height: none; overflow: visible; }
+  .nav-cta { margin-top: 8px; }
+  body.menu-is-open { overflow: hidden; }
+}
